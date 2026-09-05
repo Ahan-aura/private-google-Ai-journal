@@ -1,0 +1,36 @@
+{
+  "entities": {
+    "User": {
+      "description": "User profile record",
+      "fields": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "description": "User email address" },
+        "displayName": { "type": "string", "description": "User display name" },
+        "photoURL": { "type": "string", "description": "User avatar photo URL" },
+        "createdAt": { "type": "string", "description": "ISO timestamp of account creation" },
+        "lastLoginAt": { "type": "string", "description": "ISO timestamp of last login" }
+      }
+    },
+    "JournalSession": {
+      "description": "A private reflection / journal session with multi-turn conversation",
+      "fields": {
+        "id": { "type": "string", "description": "Unique session ID" },
+        "userId": { "type": "string", "description": "Owner user UID" },
+        "title": { "type": "string", "description": "Session title or derived focus" },
+        "promptMode": { "type": "string", "description": "Reflection mode: reflect | summarize | brainstorm | explore" },
+        "messages": {
+          "type": "array",
+          "description": "List of multi-turn conversation messages between user and Gemini",
+          "items": {
+            "sender": "string",
+            "text": "string",
+            "timestamp": "string"
+          }
+        },
+        "createdAt": { "type": "string", "description": "ISO timestamp of creation" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of latest entry/update" }
+      }
+    }
+  },
+  "firestoreRules": "firestore.rules"
+}
